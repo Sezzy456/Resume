@@ -22,6 +22,7 @@ Switch stylesheets and instantly change the look!
 #### Stylesheet 1 - Blob
 **Animated Footer Waves:** SVG wave designs with smooth animations. This is for stylesheet 1. 
 **Animated Text:** Background-clip effects, gradients, and subtle motion.
+
 <img src="Images/Screenshot Blob.png" alt="Blob Stylesheet Screenshot" width="400">
 
 #### Stylesheet 4 - Notebook
