@@ -22,10 +22,10 @@ Switch stylesheets and instantly change the look!
 #### Stylesheet 1 - Blob
 **Animated Footer Waves:** SVG wave designs with smooth animations. This is for stylesheet 1. 
 **Animated Text:** Background-clip effects, gradients, and subtle motion.
-(add image here)
+<img src="Images/Screenshot Blob.png" alt="Blob Stylesheet Screenshot" width="400">
 
 #### Stylesheet 4 - Notebook
-(add image here)
+<img src="Images/Screenshot Notebook.png" alt="Notebook Stylesheet Screenshot" width="400">
 
 ## ⚡ How It Works
 
@@ -37,7 +37,8 @@ Switch stylesheets and instantly change the look!
 -📱 Heads up! This page shines on desktop. Some elements might need tweaking on mobile screens.
  
 ## Live Preview
-This project can be viewed live using GitHub Pages: 👉 (link here)
+This project can be viewed live using GitHub Pages: 
+👉 https://sezzy456.github.io/Resume/ 
 
 ## 📜 License
 Code (HTML, CSS, JS): MIT License – feel free to reuse and adapt!
