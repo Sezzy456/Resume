@@ -1,0 +1,154 @@
+/*
+** Sarah's CSS file for normal basic version. 
+** Some of these tags might be left empty so I can use it in another stylesheet. 
+** "Newspaper" 
+*/
+
+
+/* ================ FONT ================ */
+/* I don't think I need these here unless I use a class for them */
+/* ***********************
+  .unifrakturmaguntia-regular {
+    font-family: "UnifrakturMaguntia", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .newsreader-<uniquifier> {
+    font-family: "Newsreader", serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>; // use value from 200 to 800
+    font-style: normal;
+  }
+************************* */
+
+
+/* ================ MY NAME ================ */
+.title {
+  
+  text-align: center;
+  /* text-shadow: -1px 1px 1px black; <- 1st attempt*/
+  text-shadow: -1px 1px 6px rgba(0,0,0,0.2);
+
+  /* FONT */
+  font-family: "UnifrakturMaguntia", cursive;
+  font-weight: 400;
+  font-size: 80px;
+  margin: 0;
+  margin-top: 50px;
+}
+
+/* ================ BODY ================ */
+body {
+  // background-color: #e9e4e1;
+  background-color: #fff;
+  font-family: /* "Newsreader", */ Times New Roman, serif;
+  font-optical-sizing: auto;
+  font-weight: 200; 
+  font-style: normal;
+}
+
+.content-box {
+  margin-left: 20%;
+  margin-right: 20%;
+  padding: 30px;
+  // background-color: #f1f1ef;
+  /*box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);*/
+  position: relative;
+}
+
+.content-box::before,
+.content-box::after {
+  content: '';
+  position: absolute;
+  bottom: 10px;
+  width: 40%;
+  height: 10px;
+  box-shadow: 0 5px 14px rgba(0,0,0,.7);
+  z-index: -1;
+}
+
+.content-box::before {
+  left: 15px;
+  transform: skew(-3deg) rotate(-3deg);
+}
+
+.content-box::after {
+  right: 15px;
+  transform: skew(3deg) rotate(3deg);
+}
+
+/* ================ BUTTONS ================ */
+.button {
+  
+}
+
+.right-button {
+  position: absolute;
+  right: 20%;
+  margin-right: 30px;
+}
+
+/* ================ THEME BUTTONS ================ */
+.dropbtn {
+  cursor: pointer;
+  /* position: absolute; <- Trying to get it to not interact with the title */
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9; 
+  margin: none; 
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1; 
+}
+
+.dropdown-content p {
+  padding: 12px 16px;
+  margin: 0;
+  display: block;
+  cursor: pointer; 
+}
+
+.dropdown-content p.active {background-color: cyan;} /* CHANGE tHIS COlOUR */
+
+.dropdown-content p.active:hover {background-color: lightblue;}
+
+.dropdown-content p:hover {background-color: #f1f1f1} 
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #f9f9f9; 
+}
+
+/* ================ SEASON BUTTONS ================ */
+#seasonText{
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: justify;
+    overflow: hidden;
+    display: inline-block;
+    
+    /* CURRENT PROBLEM: not exactly fitting in this gap */
+    width: 88%; 
+    /* ANOTHER PROBLEM: not quite inline with the first button */
+                
+}
+
+/* ================ SIGNATURE THANG ================ */
+.sign {
+  text-align: right; 
+  margin-right: 20%;
+  font-size: small;
+}
+
+

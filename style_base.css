@@ -1,0 +1,206 @@
+/*
+** Sarah's CSS file for normal basic version. 
+** Some of these tags might be left empty so I can use it in another stylesheet. 
+** "Base" 
+*/
+
+
+/* ================ MY NAME ================ */
+.title {
+  margin-top: 50px;
+  text-align: center;
+  color: black;
+  text-shadow: none;
+  font-size: 80px;
+}
+
+/* ================ BODY ================ */
+
+/* If I need it
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+*/
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin:0;
+}
+
+.header {
+
+}
+
+.main {
+  //padding-top: 60px;
+  background: none;
+
+}
+
+.content-box {
+  margin-left: 20%;
+  margin-right: 20%;
+  /*margin-top: 20px;*/
+  padding: 30px;
+  /*padding-top: 15px;*/
+  // overflow: hidden;
+}
+
+.footer {
+  padding-bottom: 10px;
+  //margin-bottom: -50px;
+}
+
+/* ================ BUTTONS ================ */
+.button {
+  border-color: white;
+  
+  display: inline-block;
+  
+  cursor: pointer;
+
+  border-style:none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  position: relative;
+  padding-bottom: 5px;
+  font-size: 30px;
+}
+
+
+
+.button:hover .button {
+  //font-size: bigger;
+  //background-color: 'lightpink';
+}
+
+.right-button {
+  //position: flex;
+  //left: calc(45vw - 30px);
+  //left: 30px;
+  margin-right: calc(20% + 30px); 
+}
+
+
+
+/* ================ THEME BUTTONS ================ */
+.dropbtn {
+  cursor: pointer;
+  /*position: absolute; /*<- Trying to get it to not interact with the title */
+  //margin: 0;
+  
+}
+
+.dropdown {
+  /* position: relative; */
+  // display: inline-block;
+  position: relative; 
+  z-index:2; // just trying it out
+  /*margin-left: 85%; /* THIS IS NOT PERFECT */
+  border-radius: 2px 10px 10px 10px;
+  // overflow: hidden;
+  position: relative; /* or absolute if you want it outside normal flow */
+  left: 150px;         /* move right */
+  bottom: 100px; 
+  width: 50px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9; 
+  min-width: 160px; 
+  z-index: 1; /* <- is this important? */
+  top:100%; /* Flush below button (apparently) */
+  left: 0; // not sure if this is important
+  // overflow: hidden; //we'll see
+  // border-radius: 2px 10px 10px 10px;
+  // top: calc(100% - 1px);
+  border-radius: 2px 10px 10px 10px;   /* simple full rounding */
+  overflow: hidden;  
+}
+
+.dropdown-content p {
+  padding: 12px 16px;
+  margin: 0;
+  //display: block;
+  cursor: pointer; 
+  //white-space: nowrap;
+  //overflow: hidden;
+  //text-overflow: ellipsis;
+  //border-radius: 2px 10px 10px 10px;
+
+}
+
+.dropdown-content p:hover {background-color: #f1f1f1} 
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #f9f9f9; 
+}
+
+/* ================ SEASON BUTTONS ================ */
+#seasonText{
+    margin-top: 0;
+    margin-bottom: 0;
+    //height: 20px; 
+    font-size: 20px;
+    text-align: center; // justify
+    overflow: hidden;
+    //display: inline-block; //flex; // inline-block;
+    
+    /* CURRENT PROBLEM: not exactly fitting in this gap */
+    //width: 88%;   
+    width: 100%;         /* fixed box for emoji */
+    height: 50px;        /* square shape */    
+    //wrap-text: none; 
+    overflow: hidden;
+    white-space:nowrap;         
+}
+
+.change-buttons-container{
+  display: flex;
+  //justify-content: space-between;
+  // align-items: center;
+  //overflow: hidden;
+
+}
+
+.change-colour-container{
+  display: flex;
+  //gap: 1rem;
+}
+
+.change-season-container{
+  margin-right: 0;
+  display: absolute;
+}
+
+.change-colour-container:hover .button {
+  background-color: #f9f9f9;
+}
+
+.change-season-container:hover .button {
+  background-color: #f9f9f9;
+}
+
+/* ================ SIGNATURE THANG ================ */
+.sign {
+  text-align: right; 
+  margin-right: 20%;
+  font-size: small;
+  color: white;
+}
+
+.waves-container {
+  display: none;
+}
+
+
+
+
