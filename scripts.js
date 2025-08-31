@@ -39,10 +39,10 @@ function changeStyle(style) {
     // changeColour("rgb(" + 212 + ","  + 211 + "," + 207 + ")");
     //document.getElementById('content-box').style.backgroundImage = "url('Images/textured_paper.png')";
     document.body.style.backgroundImage = "url('Images/textured_paper.png')";
-    buttons[3].classList.add('active');
+    buttons[2].classList.add('active');
   } else if (style == "Notebook"){
     theme.setAttribute('href', 'style04_notebook.css');
-    buttons[4].classList.add('active');
+    buttons[3].classList.add('active');
   }
 
 }
