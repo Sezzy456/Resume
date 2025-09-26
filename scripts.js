@@ -1,6 +1,17 @@
 // alert('changeSeasonText activated');
 
-            
+/* ============ An attempt that didn't work ==============   
+function changeLayout() {
+  currentWindow = console.log(window.location.pathname); // Just the file path (/index.html)
+
+  if (currentWindow == 'SarahEvans.html'){
+    window.location.href='SarahEvansGraphic.html';
+  } else if (currentWindow == 'SarahEvansGraphic.html'){
+    window.location.href='SarahEvans.html';
+  }
+}
+*/
+        
 function changeColour(colour) {
   document.body.style.backgroundImage = "none";
 
