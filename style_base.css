@@ -1,6 +1,6 @@
 /*
 ** Sarah's CSS file for normal basic version. 
-** Some of these tags might be left empty so I can use it in another stylesheet. 
+** Some of these tags might be left empty so it can be used in another stylesheet. 
 ** "Base" 
 */
 
@@ -60,7 +60,7 @@ body {
 /* Create two equal columns that floats next to each other */
 .column {
   float: left;
-  width: 45%;
+  width: 47%;
   padding: 10px;
 }
 
@@ -78,15 +78,16 @@ body {
   }
 }
 
+th {
+  text-align: left;
+}
+
 
 /* ================ BUTTONS ================ */
 .button {
   border-color: white;
-  
   display: inline-block;
-  
   cursor: pointer;
-
   border-style:none;
   border-radius: 50%;
   width: 50px;
@@ -96,33 +97,24 @@ body {
   font-size: 30px;
 }
 
-
-
 .button:hover .button {
   //font-size: bigger;
   //background-color: 'lightpink';
 }
 
 .right-button {
-  //position: flex;
-  //left: calc(45vw - 30px);
-  //left: 30px;
   margin-right: calc(20% + 30px); 
 }
 
 
 
-/* ================ THEME BUTTONS ================ */
+/* ================ THEME BUTTON ================ */
 .dropbtn {
   cursor: pointer;
-  /*position: absolute; /*<- Trying to get it to not interact with the title */
-  //margin: 0;
-  
+  /*position: absolute; /*<- Trying to get it to not interact with the title */  
 }
 
 .dropdown {
-  /* position: relative; */
-  // display: inline-block;
   position: relative; 
   z-index:2; // just trying it out
   /*margin-left: 85%; /* THIS IS NOT PERFECT */
@@ -142,9 +134,6 @@ body {
   z-index: 1; /* <- is this important? */
   top:100%; /* Flush below button (apparently) */
   left: 0; // not sure if this is important
-  // overflow: hidden; //we'll see
-  // border-radius: 2px 10px 10px 10px;
-  // top: calc(100% - 1px);
   border-radius: 2px 10px 10px 10px;   /* simple full rounding */
   overflow: hidden;  
 }
@@ -152,13 +141,7 @@ body {
 .dropdown-content p {
   padding: 12px 16px;
   margin: 0;
-  //display: block;
   cursor: pointer; 
-  //white-space: nowrap;
-  //overflow: hidden;
-  //text-overflow: ellipsis;
-  //border-radius: 2px 10px 10px 10px;
-
 }
 
 .dropdown-content p:hover {background-color: #f1f1f1} 
@@ -175,37 +158,49 @@ body {
 #seasonText{
     margin-top: 0;
     margin-bottom: 0;
-    //height: 20px; 
     font-size: 20px;
     text-align: center; // justify
     overflow: hidden;
-    //display: inline-block; //flex; // inline-block;
     
     /* CURRENT PROBLEM: not exactly fitting in this gap */
     //width: 88%;   
     width: 100%;         /* fixed box for emoji */
-    height: 50px;        /* square shape */    
-    //wrap-text: none; 
+    height: 50px;        /* square shape */     
     overflow: hidden;
     white-space:nowrap;         
 }
 
 .change-buttons-container{
   display: flex;
-  //justify-content: space-between;
-  // align-items: center;
-  //overflow: hidden;
-
 }
 
 .change-colour-container{
   display: flex;
-  //gap: 1rem;
 }
 
 .change-season-container{
   margin-right: 0;
   display: absolute;
+}
+
+/* RUBBISH
+.change-layout-container{
+  margin-right:0;
+  left: 1200px; //hard-coded
+  bottom: 150px; //hard-coded
+
+  display: absolute;
+}
+*/
+
+.resume-button {
+  display: absolute;
+  left: 1200px; //hard-coded
+  top: -150px; // hard-coded 
+}
+
+.change-layout-container:hover .button{
+  background-color: #f9f9f9;
 }
 
 .change-colour-container:hover .button {
