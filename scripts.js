@@ -48,14 +48,14 @@ function changeStyle(style) {
   } else if (style == "Newspaper") {
     theme.setAttribute('href', 'style03_newspaper.css');
     // changeColour("rgb(" + 212 + ","  + 211 + "," + 207 + ")");
-    //document.getElementById('content-box').style.backgroundImage = "url('Images/textured_paper.png')";
-    document.body.style.backgroundImage = "url('Images/textured_paper.png')";
+    document.getElementById('content-box').style.backgroundImage = "url('Images/textured_paper2.png')";
+    // document.body.style.backgroundImage = "url('Images/textured_paper2.png')";
     buttons[2].classList.add('active');
   } else if (style == "Notebook"){
     theme.setAttribute('href', 'style04_notebook.css');
+    document.body.style.backgroundImage = "url('Images/desk.jpg')";
     buttons[3].classList.add('active');
   }
-
 }
 
 
