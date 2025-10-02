@@ -85,7 +85,7 @@ body {
   border-radius: 20px;
   background-color: white;
   position: relative;
-  
+  margin-top:10px;
 }
 
 .footer {
@@ -261,6 +261,3 @@ body {
     min-height:40px;
   }
 }
-
-
-
