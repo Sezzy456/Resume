@@ -9,7 +9,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Homemade+Apple&family=Indie+Flower&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica+SC&family=Noticia+Text:ital,wght@0,400;0,700;1,400;1,700&family=Special+Elite&display=swap" rel="stylesheet">
 
 
     </head>
@@ -27,24 +27,26 @@
 	  </div>
 	</div>
 
-	<div class="change-layout-container">
-      	  <a href="SarahEvansGraphic.html"><button title="Change resume layout" class="button resume-button" onclick="changeLayout()">📄</button></a>
-        </div>
+	
 
 </header>
+
+<div class="change-buttons-container">
+  <div class="change-colour-container">
+    <button title="Change background colour" class="button" onclick="changeColour()">🎨</button>
+  </div>
+  <div class="change-season-container">
+    <button title="Change the season" class="button right-button" value="null" onclick="cycleSeason()" id="seasonButton">☀️</button>
+  </div>
+  <div class="change-layout-container">
+    <a href="SarahEvansGraphic.html"><button title="Change resume layout" class="button resume-button" onclick="changeLayout()">📄</button></a>
+  </div>
+</div>
 
 <main id='main' class='main'>
   <div id="content-box" class="content-box">
 
-  <div class="change-buttons-container">
-    <div class="change-colour-container">
-      <button title="Change background colour" class="button" onclick="changeColour()">🎨</button>
-    </div>
-<p id="seasonText"></p>
-    <div class="change-season-container">
-            <button title="Change the season" class="button right-button" value="null" onclick="cycleSeason()" id="seasonButton">☀️</button>
-    </div>
-  </div>
+  <p id="seasonText"></p>
             
 	<div class="section center-aligned information">
           <p><i>Phone:</i> 0000 000 000 • <i>Email:</i> example@email.com • <i>Location:</i> Melbourne, Victoria 

@@ -33,8 +33,8 @@ body {
 }
 
 .main {
-  //padding-top: 60px;
-  //background: none;
+  /*padding-top: 60px;*/
+  /*background: none;*/
 
 }
 
@@ -43,8 +43,8 @@ body {
   margin-right: 20%;
   margin-top: -90px;
   padding: 30px;
-  padding-top: 15px;
-  // overflow: hidden;
+  padding-top: 15px; /* currently not sure if this is making an impact */
+  /* overflow: hidden; */
 }
 
 .footer {
@@ -73,11 +73,15 @@ body {
 }
 
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
+/* @media screen and (max-width: 600px) { */
+@media (max-width: 600px) {  
   .column {
     width: 100%;
   }
-}
+  body {
+    background-color: blue;
+  }
+} /* CURRENTLY NOT WORKING: WIDTH IS NOT CHANGING */
 
 th {
   text-align: left;

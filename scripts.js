@@ -49,7 +49,7 @@ function changeStyle(style) {
     theme.setAttribute('href', 'style03_newspaper.css');
     // changeColour("rgb(" + 212 + ","  + 211 + "," + 207 + ")");
     document.getElementById('content-box').style.backgroundImage = "url('Images/textured_paper2.png')";
-    // document.body.style.backgroundImage = "url('Images/textured_paper2.png')";
+    document.body.style.backgroundImage = "url('Images/textured_paper2.png')";
     buttons[2].classList.add('active');
   } else if (style == "Notebook"){
     theme.setAttribute('href', 'style04_notebook.css');
