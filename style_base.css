@@ -49,8 +49,8 @@ body {
 
 .footer {
   padding-bottom: 10px;
-  //margin-bottom: -50px;
-  //margin-bottom: 20px;
+  /* //margin-bottom: -50px; */
+  /* //margin-bottom: 20px; */
 }
 
 .center-aligned {
@@ -103,8 +103,8 @@ th {
 }
 
 .button:hover .button {
-  //font-size: bigger;
-  //background-color: 'lightpink';
+  /* //font-size: bigger; */
+  /* //background-color: 'lightpink'; */
 }
 
 .right-button {
@@ -121,10 +121,10 @@ th {
 
 .dropdown {
   position: relative; 
-  z-index:2; // just trying it out
+  z-index:2; /*// just trying it out*/
   /*margin-left: 85%; /* THIS IS NOT PERFECT */
   border-radius: 2px 10px 10px 10px;
-  // overflow: hidden;
+  /* // overflow: hidden; */
   position: relative; /* or absolute if you want it outside normal flow */
   left: 150px;         /* move right */
   bottom: 100px; 
@@ -138,7 +138,7 @@ th {
   min-width: 160px; 
   z-index: 1; /* <- is this important? */
   top:100%; /* Flush below button (apparently) */
-  left: 0; // not sure if this is important
+  left: 0; /* not sure if this is important*/
   border-radius: 2px 10px 10px 10px;   /* simple full rounding */
   overflow: hidden;  
 }
@@ -164,11 +164,11 @@ th {
     margin-top: 0;
     margin-bottom: 0;
     font-size: 20px;
-    text-align: center; // justify
+    text-align: center; /*/ justify*/
     overflow: hidden;
     
     /* CURRENT PROBLEM: not exactly fitting in this gap */
-    //width: 88%;   
+    /* //width: 88%;    */
     width: 100%;         /* fixed box for emoji */
     height: 50px;        /* square shape */     
     overflow: hidden;
@@ -200,8 +200,8 @@ th {
 
 .resume-button {
   display: absolute;
-  left: 1200px; //hard-coded
-  top: -150px; // hard-coded 
+  left: 1200px; /*hard-coded*/
+  top: -150px; /* hard-coded */
 }
 
 .change-layout-container:hover .button{

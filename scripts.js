@@ -15,18 +15,31 @@ function changeLayout() {
 function changeColour(colour) {
   document.body.style.backgroundImage = "none";
 
-    if (colour == null){
-      if (theme.getAttribute('href') == 'style01.css'){
-        let newGradient = 'linear-gradient(' + get_rand_degree() +'deg,' + get_rand_colour() + '0%,' + get_rand_colour() + '100%)'
-        document.getElementsByTagName('body')[0].style.background = newGradient;
-      } else {
-        document.body.style.backgroundColor = get_rand_colour();
-      }
+  if (colour == null){
+    if (theme.getAttribute('href') == 'style01.css'){
+      let newGradient = 'linear-gradient(' + get_rand_degree() +'deg,' + get_rand_colour() + '0%,' + get_rand_colour() + '100%)'
+      document.getElementsByTagName('body')[0].style.background = newGradient;
     } else {
-      document.body.style.backgroundColor = colour;
+      document.body.style.backgroundColor = get_rand_colour();
     }
-  
+  } else {
+    document.body.style.backgroundColor = colour;
+  }
 }
+
+function showResume(type) {
+  document.getElementById("resume-ux").hidden = type !== "ux";
+  document.getElementById("resume-dev").hidden = type !== "dev";
+
+  // Remember choice
+  localStorage.setItem("resumeType", type);
+}
+
+// Load saved preference
+window.addEventListener("DOMContentLoaded", () => {
+  const saved = localStorage.getItem("resumeType") || "dev";
+  showResume(saved);
+});
 
 function changeStyle(style) {
   let theme = document.getElementById('theme');

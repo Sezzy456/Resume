@@ -8,13 +8,13 @@
 /* ================ MY NAME ================ */
 .title {
   position: relative;
-  //padding-top: 0;
+  /* //padding-top: 0; */
   text-align: center;
   margin: auto;
   /* FUNKY COLOURS */
   text-transform: uppercase;
   background-image: radial-gradient(circle,rgba(242, 200, 46, 1) 0%, rgba(232, 23, 166, 1) 68%, rgba(69, 63, 242, 1) 100%);
-  );
+  /* ); */
   font-family: arial, sans-serif;
   font-weight: 900;
   transform: scale(1, 0.8);
@@ -36,7 +36,7 @@
 
 /* ================ BODY ================ */
 body {
-  //background-color: white;
+  /* //background-color: white; */
   background: #E817A6;
   background: linear-gradient(30deg,rgba(245, 223, 61, 1) 0%, rgba(235, 45, 187, 1) 100%);
   margin:0;
@@ -57,7 +57,7 @@ body {
   position: absolute; /* solution 1 */
   bottom: 0;
   left: 0;
-  //display: block;
+  /* //display: block; */
   width: 100%;
   height: 10vw;  /* wave height */
   
@@ -182,14 +182,37 @@ body {
   max-height:120px;
   transform: translateY(-40%); /* push it up by its own height - solution 1*/
   z-index: 0;
+  overflow: visible;
 }
 
 .waves-container {
   display: block;
-  height: 10px;
+  /* height: 10px; */
+  height: 120px; /* same as wave height */
 }
 
-/* Animation */
+/* ============================ TESTING ============================== */
+
+/* .waves-container {
+  display: block;
+  height: 120px;
+  /* overflow: hidden; *
+} */
+
+/* .waves {
+  width: 100%;
+  min-height: 100px;
+  max-height: 120px;
+  transform: translateY(-40%);
+}
+
+@keyframes move-forever {
+  0%   { transform: translate3d(0,0,0); }
+  100% { transform: translate3d(-760px,0,0); }
+} */
+
+
+/* ============================================== Animation =========================================== */
 
 .parallax > use {
   animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
