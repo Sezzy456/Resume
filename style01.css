@@ -79,6 +79,9 @@ body {
   /* // background: linear-gradient(30deg,rgba(245, 223, 61, 1) 0%, rgba(235, 45, 187, 1) 100%); */
   z-index: 1;
   position: relative;
+  max-width: 80vw;
+  margin: 0 auto;
+  /* padding: 0 30px; */
 }
 
 .content-box {
@@ -183,6 +186,10 @@ body {
   transform: translateY(-40%); /* push it up by its own height - solution 1*/
   z-index: 0;
   overflow: visible;
+  /* overflow: hidden; */
+  --wave_offset: -1920px;
+  transform: translateX(var(--wave_offset));/* starting position only */
+  
 }
 
 .waves-container {
@@ -216,18 +223,26 @@ body {
 
 
 .parallax use {
-  /* animation: move-forever 20s linear infinite; */
+  /* animation: move-forever 25s linear infinite; */
   animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+  /* transform: translateX(-0.5px); */
 }
 
+
+/* .layer use { animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;} */
 .layer1 use { animation-delay: -2s; animation-duration: 7s; }
 .layer2 use { animation-delay: -3s; animation-duration: 10s; }
 .layer3 use { animation-delay: -4s; animation-duration: 13s; }
 .layer4 use { animation-delay: -5s; animation-duration: 20s; }
 
-@keyframes move-forever {
+/* @keyframes move-forever {
   from { transform: translateX(-1270px); }
   to   { transform: translateX(-510px); }
+} */
+
+@keyframes move-forever {
+  from { transform: translateX(0); }
+  to   { transform: translateX(760px); }
 }
 
 /* IF I WANT: add another wave but depending on screen size don't render the useless ones.  */
@@ -236,5 +251,19 @@ body {
   0% {transform: translate3d(-860px,0,0);}
   100% {transform: translate3d(-100px,0,0);}
 }  */
+
+/* ================================================== NAVIGATION / STYLE ================================================= */
+.naviagtion-bar {
+  position: fixed;      /* Stays in place even when scrolling */ /* This will probably change. It might do that thing where after a certain amount of scolling it will stick */
+  left: 20px;          /* Distance from right edge */
+  /* top: 50%;             Vertically centered */
+  /* transform: translateY(-50%); Perfect vertical centering */
+  background-color: rgba(255,255,255,0.7);
+  padding: 10px;
+  /* border-radius: 50%; */
+  font-size: 24px;
+  /* cursor: pointer; */
+  /* z-index: 9999;        On top of everything */
+}
 
 
