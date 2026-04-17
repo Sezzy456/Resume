@@ -43,7 +43,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
 function changeStyle(style) {
   let theme = document.getElementById('theme');
-  document.getElementById('content-box').style.backgroundImage = "";
+  let contentBoxes = document.querySelectorAll('.content-box');
+  contentBoxes.forEach(box => box.style.backgroundImage = "");
   theme.setAttribute('href', 'style_base.css');
   
   /* Remove 'active' class */
@@ -60,8 +61,7 @@ function changeStyle(style) {
     buttons[1].classList.add('active');
   } else if (style == "Newspaper") {
     theme.setAttribute('href', 'style03_newspaper.css');
-    // changeColour("rgb(" + 212 + ","  + 211 + "," + 207 + ")");
-    document.getElementById('content-box').style.backgroundImage = "url('Images/textured_paper2.png')";
+    contentBoxes.forEach(box => box.style.backgroundImage = "url('Images/textured_paper2.png')");
     document.body.style.backgroundImage = "url('Images/textured_paper2.png')";
     buttons[2].classList.add('active');
   } else if (style == "Notebook"){
@@ -71,17 +71,19 @@ function changeStyle(style) {
   }
 }
 
-
 function assignSeason(season, emoji, colour, nextSeason) {
   document.getElementById("seasonButton").value = season;
-  document.getElementById("seasonText").innerHTML = newSeasonText(emoji);
+  let seasonTextObj = document.getElementById("seasonText");
+  if (seasonTextObj) {
+     seasonTextObj.innerHTML = newSeasonText(emoji);
+  }
   changeColour(colour);
   /* Change button to next season*/
   document.getElementById("seasonButton").innerHTML = nextSeason;
 }
 
 function cycleSeason() {
-  season = document.getElementById("seasonButton").value;
+  let season = document.getElementById("seasonButton").value;
   if (season == "null"){
     assignSeason("Summer", "☀️", "gold", "🍂");
   } else if (season == "Summer"){
@@ -95,10 +97,9 @@ function cycleSeason() {
   }
 }
 
-
 function newSeasonText(emoji){
-  seasonTxt = "";
-  for (i=0; i<100; i++){
+  let seasonTxt = "";
+  for (let i=0; i<100; i++){
     seasonTxt = seasonTxt + emoji;
   }
   return seasonTxt;
@@ -113,4 +114,37 @@ function get_rand_degree() {
   return Math.floor(Math.random()*360);
 }
 
+/* ================ NAV ARROW LOGIC ================ */
+window.addEventListener('scroll', updateNavArrow);
+window.addEventListener('resize', updateNavArrow);
+window.addEventListener('DOMContentLoaded', updateNavArrow);
 
+function updateNavArrow() {
+  const arrow = document.getElementById('nav-arrow');
+  const navLinks = document.querySelectorAll('.nav-link');
+  // Need the shared parent to measure offset correctly
+  const navBar = document.querySelector('.navigation-bar');
+  if (!arrow || navLinks.length === 0 || !navBar) return;
+
+  // The arrow container is beside the nav links.
+  // We use relative positions of the links within the navigation bar.
+  const firstLink = navLinks[0];
+  const lastLink = navLinks[navLinks.length - 1];
+  
+  // Calculate vertical center of the links 
+  const minTop = firstLink.offsetTop + (firstLink.offsetHeight / 2) - (arrow.offsetHeight / 2);
+  const maxTop = lastLink.offsetTop + (lastLink.offsetHeight / 2) - (arrow.offsetHeight / 2);
+
+  const scrollY = window.scrollY;
+  const scrollMax = document.documentElement.scrollHeight - window.innerHeight;
+  let progress = 0;
+  
+  if (scrollMax > 0) {
+    progress = scrollY / scrollMax;
+  }
+  progress = Math.max(0, Math.min(1, progress));
+
+  const newTop = minTop + progress * (maxTop - minTop);
+  // Using transform instead of top for smoother animation performance
+  arrow.style.transform = `translateY(${newTop}px)`;
+}

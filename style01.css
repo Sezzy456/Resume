@@ -65,15 +65,15 @@ body {
   background: url("data:image/svg+xml;utf8,\
 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 760 70' preserveAspectRatio='none'>\
 <path d='M 760 30 C 612 30 624 60 545 60 C 453 59 438 37 388 30 C 329 22 286 34 261 46 C 266 38 266 36 267 32 C 269 24 253 18 256 31 C 241 23 241 39 250 40 C 258 41 264 41 261 46 C 252 51 229 61 211 61 C 125 61 114 30 0 30 L 0 0 L 760 0 Z' fill='white'/>\
-</svg>") no-repeat bottom center;
+</svg>") repeat-x bottom center;
 
-  background-size: 100% 100%;  /* stretches to full width & height */
+  background-size: auto 100%;  /* auto width against height restriction stops squishing! */
   transform: translateY(70%); /* push it down by its own height - solution 1*/
   z-index: 0;
 }
 
 .main {
-  padding-top: 120px;
+  padding-top: 240px;
   padding-bottom: 130px;
   /* // background: #f5df3d; */
   /* // background: linear-gradient(30deg,rgba(245, 223, 61, 1) 0%, rgba(235, 45, 187, 1) 100%); */
@@ -88,8 +88,10 @@ body {
   border-radius: 20px;
   background-color: white;
   position: relative;
-  margin-top:10px;
+  margin-top: 0;
 }
+
+
 
 .footer {
   background-color: white;
@@ -223,8 +225,7 @@ body {
 
 
 .parallax use {
-  /* animation: move-forever 25s linear infinite; */
-  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+  animation: move-forever 25s linear infinite;
   /* transform: translateX(-0.5px); */
 }
 
