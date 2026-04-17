@@ -11,7 +11,10 @@
   text-align: center;
   color: black;
   text-shadow: none;
-  font-size: 80px;
+  font-size: clamp(20px, 9vw, 80px);
+  padding: 0 10px;
+  box-sizing: border-box;
+  white-space: nowrap;
 }
 
 /* ================ BODY ================ */
@@ -50,6 +53,7 @@ body {
   flex: 0 0 250px;
   position: sticky;
   top: 60px; /* Sticky scroll magic */
+  z-index: 100;
 }
 
 .card {
@@ -57,6 +61,25 @@ body {
   background-color: white;
   padding: 30px;
   padding-top: 15px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.burger-menu {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .card-title {
@@ -69,6 +92,11 @@ body {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
   text-align: center;
+}
+
+.card-header .card-title {
+  border-bottom: none;
+  margin-bottom: 0;
 }
 
 .content-column {
@@ -100,13 +128,23 @@ body {
 /* Graphic Version */
 /* Create two equal columns that floats next to each other */
 .column {
-  float: left;
-  width: 47%;
+  flex: 1 1 50%;
+  max-width: 50%;
   padding: 10px;
+  box-sizing: border-box;
 }
 
 #resume-ux .column {
   padding-top: 0;
+}
+
+#about-me .career-overview p:first-child {
+  margin-top: 0;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 /* Clear floats after the columns */
@@ -116,16 +154,13 @@ body {
   clear: both;
 }
 
-/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-/* @media screen and (max-width: 600px) { */
-@media (max-width: 600px) {  
+/* Responsive layout - when the screen is less than 1100px wide, make the two columns stack on top of each other instead of next to each other */
+@media (max-width: 1100px) {  
   .column {
-    width: 100%;
+    flex: 1 1 100%;
+    max-width: 100%;
   }
-  body {
-    background-color: blue;
-  }
-} /* CURRENTLY NOT WORKING: WIDTH IS NOT CHANGING */
+}
 
 th {
   text-align: left;
@@ -265,9 +300,9 @@ th {
 /* ================ SIGNATURE THANG ================ */
 .sign {
   text-align: right; 
-  margin-right: 20%;
   font-size: small;
   color: white;
+  margin-top: -15px;
 }
 
 .waves-container {
@@ -351,6 +386,28 @@ th {
   .waves {
     height:40px;
     min-height:40px;
+  }
+
+  .burger-menu {
+    display: inline-block;
+  }
+
+  .card-header {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+  
+  .card.is-open .card-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .card:not(.is-open) {
+    padding-bottom: 15px; /* compress vertical padding when closed */
+  }
+
+  .collapsible:not(.show) {
+    display: none !important;
   }
 }
 

@@ -36,11 +36,16 @@
   font-style: normal;*/
 
   font-family: "Indie Flower", cursive;
-  font-weight: 600;
+  font-weight: 900;
   font-style: normal;
-  font-size: 80px;
+  font-size: clamp(30px, 15vw, 80px);
   margin: 0;
   margin-top: 50px;
+  -webkit-text-stroke: 25px white;
+  paint-order: stroke fill;
+  padding: 0 20px;
+  box-sizing: border-box;
+  white-space: nowrap;
 }
 
 .header {}
@@ -81,7 +86,20 @@ body {
 }
 
 .sidebar {
-  margin-left: -40px;
+
+}
+
+.main {
+  gap: 60px;
+}
+
+.content-box .card-title {
+  border-bottom: none;
+  margin-top: 10px;
+}
+
+#about-me .card-title {
+  margin-bottom: 5px;
 }
 
 .sidebar .card {
@@ -180,7 +198,8 @@ body {
 #seasonText {
   margin-top: 0;
   margin-bottom: 0;
-  height: 30px;
+  height: auto;
+  min-height: 0;
   text-align: justify;
   overflow: hidden;
   display: inline-block;
@@ -194,6 +213,6 @@ body {
 /* ================ SIGNATURE THANG ================ */
 .sign {
   text-align: right;
-  margin-right: 20%;
   font-size: small;
+  color: black;
 }

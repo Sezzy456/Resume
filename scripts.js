@@ -27,12 +27,19 @@ function changeColour(colour) {
   }
 }
 
-function showResume(type) {
+function showResume(type, doScroll = false) {
   document.getElementById("resume-ux").hidden = type !== "ux";
   document.getElementById("resume-dev").hidden = type !== "dev";
 
   // Remember choice
   localStorage.setItem("resumeType", type);
+  
+  if (doScroll) {
+    const resumeSection = document.getElementById("resume");
+    if (resumeSection) {
+      resumeSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
 }
 
 // Load saved preference
@@ -44,6 +51,7 @@ window.addEventListener("DOMContentLoaded", () => {
 function changeStyle(style) {
   let theme = document.getElementById('theme');
   let contentBoxes = document.querySelectorAll('.content-box');
+  let pageTitle = document.querySelector('h1.title');
   contentBoxes.forEach(box => box.style.backgroundImage = "");
   theme.setAttribute('href', 'style_base.css');
   
@@ -55,19 +63,19 @@ function changeStyle(style) {
 
   if (style == "Flat-Rounded") {
     theme.setAttribute('href', 'style01.css');
+    if (pageTitle) pageTitle.textContent = "Sarah Evans";
     buttons[0].classList.add('active');
-  } else if (style == "Shadow") {
-    theme.setAttribute('href', 'style02.css');
-    buttons[1].classList.add('active');
   } else if (style == "Newspaper") {
     theme.setAttribute('href', 'style03_newspaper.css');
+    if (pageTitle) pageTitle.textContent = "Sarah Evans";
     contentBoxes.forEach(box => box.style.backgroundImage = "url('Images/textured_paper2.png')");
     document.body.style.backgroundImage = "url('Images/textured_paper2.png')";
-    buttons[2].classList.add('active');
+    buttons[1].classList.add('active');
   } else if (style == "Notebook"){
     theme.setAttribute('href', 'style04_notebook.css');
+    if (pageTitle) pageTitle.textContent = "Sarah evans";
     document.body.style.backgroundImage = "url('Images/desk.jpg')";
-    buttons[3].classList.add('active');
+    buttons[2].classList.add('active');
   }
 }
 
@@ -148,3 +156,26 @@ function updateNavArrow() {
   // Using transform instead of top for smoother animation performance
   arrow.style.transform = `translateY(${newTop}px)`;
 }
+
+/* ================ COLLAPSIBLE SIDEBAR MENU LOGIC ================ */
+function toggleCard(cardId) {
+  const content = document.getElementById(cardId + '-content');
+  if (content) {
+    content.classList.toggle('show');
+    const cardParent = content.closest('.card');
+    if (cardParent) {
+      cardParent.classList.toggle('is-open');
+    }
+  }
+}
+
+// Add smooth scrolling to navigation links
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', (e) => {
+    const targetId = e.target.getAttribute('data-target');
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});

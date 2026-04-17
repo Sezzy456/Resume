@@ -25,8 +25,11 @@
 <main id='main' class='main'>
   <div class="sidebar">
     <div class="card">
-      <h4 class="card-title">NAVIGATION</h4>
-      <div class="navigation-bar">
+      <div class="card-header" onclick="toggleCard('nav')">
+        <h4 class="card-title">NAVIGATION</h4>
+        <button class="burger-menu">☰</button>
+      </div>
+      <div class="navigation-bar collapsible" id="nav-content">
         <div class="scroll-arrow-container">
           <div class="scroll-arrow" id="nav-arrow">→</div>
         </div>
@@ -39,11 +42,15 @@
     </div>
     
     <div class="card style-selector">
-      <h4 class="card-title">STYLES</h4>
+      <div class="card-header" onclick="toggleCard('styles')">
+        <h4 class="card-title">STYLES</h4>
+        <button class="burger-menu">☰</button>
+      </div>
       
-      <div class="resume-toggles">
-        <button onclick="showResume('dev')">Developer Resume</button>
-        <button onclick="showResume('ux')">Designer Resume</button>
+      <div class="collapsible" id="styles-content">
+        <div class="resume-toggles">
+        <button onclick="showResume('dev', true)">Developer Resume</button>
+        <button onclick="showResume('ux', true)">Designer Resume</button>
       </div>
 
       <div class="change-buttons-grid">
@@ -51,7 +58,6 @@
           <button title="Change the stylesheet" class="button dropbtn">⚙️</button>
           <div class="dropdown-content">
             <p class="dropdown-button active" onclick="changeStyle('Flat-Rounded')">Blob</p>
-            <p class="dropdown-button" onclick="changeStyle('Shadow')">Shadow</p>
             <!--<p class="dropdown-button">Funky</p>-->
             <p class="dropdown-button" onclick="changeStyle('Newspaper')">Newspaper</p>
             <p class="dropdown-button" onclick="changeStyle('Notebook')">Notebook</p>
@@ -65,6 +71,7 @@
         <div class="change-season-container">
           <button title="Change the season" class="button" value="null" onclick="cycleSeason()" id="seasonButton">☀️</button>
         </div>
+      </div>
       </div>
     </div>
   </div>
@@ -241,17 +248,16 @@
       <p class="center-aligned">References available upon request</p>
     </div>
   </div>
-  </div>
+  <p class="sign">Made by Sarah Evans</p>
+</div>
 </main>
 
 <footer class="footer">
 
-<p class="sign">Made by Sarah Evans</p>
-
 <!-- My Waves -->
 <div class="waves-container">
   <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-viewBox="0 0 760 80"  shape-rendering="auto">
+viewBox="0 0 760 80" shape-rendering="auto">
     <defs>
       <path id="gentle-wave" d="M 760 10 C 612 10 624 40 545 40 C 453 39 438 17 388 10 C 329 2 286 14 261 26 C 266 18 266 16 267 12 C 269 4 253 -2 256 11 C 241 3 241 19 250 20 C 258 21 264 21 261 26 C 252 31 229 41 211 41 C 125 41 114 10 0 10 L 0 80 L 760 80 Z" />
     </defs>
