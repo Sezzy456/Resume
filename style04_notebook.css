@@ -85,12 +85,21 @@ body {
   gap: 40px;
 }
 
-.sidebar {
+/* Match snap points to style_base layout stages */
+@media (max-width: 1150px) {
+  #content-box, .content-box {
+    padding-left: 30px; /* Reduce 90px to fit containers */
+  }
+}
 
+@media (min-width: 1151px) {
+  .sidebar {
+    margin-left: -30px; /* Subtle push to the left only on desktop */
+  }
 }
 
 .main {
-  gap: 60px;
+  gap: 20px;
 }
 
 .content-box .card-title {
@@ -199,15 +208,11 @@ body {
   margin-top: 0;
   margin-bottom: 0;
   height: auto;
-  min-height: 0;
+  min-height: 1.2em;
   text-align: justify;
   overflow: hidden;
   display: inline-block;
-
-  /* CURRENT PROBLEM: not exactly fitting in this gap */
   width: 88%;
-  /* ANOTHER PROBLEM: not quite inline with the first button */
-
 }
 
 /* ================ SIGNATURE THANG ================ */

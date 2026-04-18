@@ -12,19 +12,121 @@ function changeLayout() {
 }
 */
         
-function changeColour(colour) {
-  document.body.style.backgroundImage = "none";
+let bgState = {
+  c1: '#f5df3d',
+  c2: '#eb2dbb',
+  c2Enabled: true,
+  angle: 135,
+  texture: 'none'
+};
 
-  if (colour == null){
-    if (theme.getAttribute('href') == 'style01.css'){
-      let newGradient = 'linear-gradient(' + get_rand_degree() +'deg,' + get_rand_colour() + '0%,' + get_rand_colour() + '100%)'
-      document.getElementsByTagName('body')[0].style.background = newGradient;
-    } else {
-      document.body.style.backgroundColor = get_rand_colour();
-    }
+function quickRandomize(e) {
+  if (e) e.stopPropagation();
+  bgState.c1 = get_rand_colour();
+  bgState.c2 = get_rand_colour();
+  bgState.c2Enabled = true;
+  bgState.angle = get_rand_degree();
+  bgState.texture = 'none'; // Clear textures on quick dice
+  updatePortfolioBackground();
+  updateTextureButtons(); // Sync modal UI
+  if (document.getElementById('bg-modal').classList.contains('show')) syncBgInputs();
+}
+
+function openPopup(id) {
+  document.getElementById(id).classList.add('show');
+  if (id === 'bg-modal') syncBgInputs();
+}
+
+function closePopup(id) {
+  document.getElementById(id).classList.remove('show');
+}
+
+function closePopupIfOutside(e, id) {
+  if (e.target.id === id) closePopup(id);
+}
+
+function syncBgInputs() {
+  document.getElementById('bg-color-1').value = rgbToHex(bgState.c1) || bgState.c1;
+  document.getElementById('bg-color-2').value = rgbToHex(bgState.c2) || bgState.c2;
+  document.getElementById('enable-color-2').checked = bgState.c2Enabled;
+  document.getElementById('bg-angle').value = bgState.angle;
+  updateTextureButtons();
+}
+
+function rgbToHex(rgb) {
+  if (!rgb.startsWith('rgb')) return rgb;
+  const match = rgb.match(/\d+/g);
+  if (!match) return '#ffffff';
+  return "#" + match.slice(0, 3).map(x => parseInt(x).toString(16).padStart(2, '0')).join('');
+}
+
+function updateBgFromInputs() {
+  bgState.c1 = document.getElementById('bg-color-1').value;
+  bgState.c2 = document.getElementById('bg-color-2').value;
+  bgState.c2Enabled = document.getElementById('enable-color-2').checked;
+  bgState.angle = document.getElementById('bg-angle').value;
+  updatePortfolioBackground();
+}
+
+function selectTexture(tex) {
+  bgState.texture = tex;
+  updateTextureButtons();
+  updatePortfolioBackground();
+}
+
+function updateTextureButtons() {
+  document.querySelectorAll('.texture-option').forEach(opt => {
+    opt.classList.toggle('active', opt.textContent.toLowerCase() === bgState.texture);
+  });
+}
+
+function updatePortfolioBackground() {
+  const body = document.body;
+  let bgString = "";
+
+  // Base Colors
+  if (bgState.c2Enabled) {
+    bgString = `linear-gradient(${bgState.angle}deg, ${bgState.c1} 0%, ${bgState.c2} 100%)`;
   } else {
-    document.body.style.backgroundColor = colour;
+    bgString = bgState.c1;
   }
+
+  body.style.background = bgString;
+  body.style.backgroundColor = bgState.c1; // Fallback
+
+  // Textures
+  if (bgState.texture === 'paper') {
+    body.style.backgroundImage = `url('Images/textured_paper2.png'), ${bgState.c2Enabled ? bgString : 'none'}`;
+  } else if (bgState.texture === 'desk') {
+    body.style.backgroundImage = `url('Images/desk.jpg'), ${bgState.c2Enabled ? bgString : 'none'}`;
+  } else {
+    body.style.backgroundImage = bgState.c2Enabled ? bgString : 'none';
+  }
+
+  const preview = document.getElementById('bg-preview');
+  const miniPreview = document.getElementById('bg-modal-preview');
+  const c1Circle = document.getElementById('c1-circle');
+  const c2Circle = document.getElementById('c2-circle');
+
+  const finalStyle = body.style.background || body.style.backgroundColor;
+
+  if (preview) preview.style.background = finalStyle;
+  if (miniPreview) miniPreview.style.background = finalStyle;
+  if (c1Circle) c1Circle.style.backgroundColor = bgState.c1;
+  if (c2Circle) c2Circle.style.backgroundColor = bgState.c2;
+}
+
+function changeColour(colour) {
+  if (colour === null) {
+    bgState.c1 = get_rand_colour();
+    bgState.c2 = get_rand_colour();
+    bgState.c2Enabled = Math.random() > 0.5;
+  } else {
+    bgState.c1 = colour;
+    bgState.c2Enabled = false;
+  }
+  updatePortfolioBackground();
+  if (document.getElementById('bg-modal').classList.contains('show')) syncBgInputs();
 }
 
 const RESUME_DATA = {
@@ -275,6 +377,17 @@ window.addEventListener("DOMContentLoaded", () => {
   const saved = localStorage.getItem("resumeType");
   const type = (saved && RESUME_DATA[saved]) ? saved : "researcher";
   showResume(type);
+
+  // Initialize background and UI
+  // Start with signature Pink-Gold gradient
+  bgState.c1 = '#f5df3d'; // Gold
+  bgState.c2 = '#eb2dbb'; // Pink
+  bgState.c2Enabled = true;
+  bgState.angle = 30;
+  updatePortfolioBackground();
+  
+  // Set initial Season state
+  assignSeason("None", " ", null, "☀️");
 });
 
 function changeStyle(style) {
@@ -284,53 +397,74 @@ function changeStyle(style) {
   contentBoxes.forEach(box => box.style.backgroundImage = "");
   theme.setAttribute('href', 'style_base.css');
   
-  /* Remove 'active' class */
-  let buttons = document.getElementsByClassName('dropdown-button');
-  for (let i = 0; i < buttons.length; i++) {
-    buttons[i].classList.remove('active');
-  }
-
+  closePopup('style-modal');
+  
   if (style == "Flat-Rounded") {
     theme.setAttribute('href', 'style01.css');
     if (pageTitle) pageTitle.textContent = "Sarah Evans";
-    buttons[0].classList.add('active');
   } else if (style == "Newspaper") {
     theme.setAttribute('href', 'style03_newspaper.css');
     if (pageTitle) pageTitle.textContent = "Sarah Evans";
     contentBoxes.forEach(box => box.style.backgroundImage = "url('Images/textured_paper2.png')");
     document.body.style.backgroundImage = "url('Images/textured_paper2.png')";
-    buttons[1].classList.add('active');
   } else if (style == "Notebook"){
     theme.setAttribute('href', 'style04_notebook.css');
     if (pageTitle) pageTitle.textContent = "Sarah evans";
-    document.body.style.backgroundImage = "url('Images/desk.jpg')";
-    buttons[2].classList.add('active');
+    selectTexture('desk');
   }
+  
+  const styleDisplay = document.getElementById('current-style-display');
+  if (styleDisplay) styleDisplay.textContent = style.replace('Flat-Rounded', 'Blob');
 }
 
-function assignSeason(season, emoji, colour, nextSeason) {
-  document.getElementById("seasonButton").value = season;
+function assignSeason(season, emoji, colour, nextEmoji) {
+  const seasonBtn = document.getElementById("seasonButton-hidden");
+  if (seasonBtn) seasonBtn.value = season;
+  
+  const emojiDisplay = document.getElementById("season-emoji-display");
+  if (emojiDisplay) {
+    emojiDisplay.textContent = emoji === " " ? "☀️" : emoji;
+    emojiDisplay.style.visibility = emoji === " " ? "hidden" : "visible";
+  }
+
+  const seasonLabel = document.getElementById("season-label-text");
+  if (seasonLabel) {
+    const displayEmoji = emoji === " " ? "◌" : emoji;
+    const displayNext = nextEmoji === " " ? "◌" : nextEmoji;
+    seasonLabel.textContent = `Season ${displayEmoji} → ${displayNext}`;
+  }
+
   let seasonTextObj = document.getElementById("seasonText");
   if (seasonTextObj) {
-     seasonTextObj.innerHTML = newSeasonText(emoji);
+     const isNone = emoji === " ";
+     seasonTextObj.style.color = isNone ? "transparent" : "inherit";
+     const textEmoji = isNone ? "☀️" : emoji; 
+     seasonTextObj.innerHTML = newSeasonText(textEmoji);
   }
-  changeColour(colour);
-  /* Change button to next season*/
-  document.getElementById("seasonButton").innerHTML = nextSeason;
+  
+  // Only update background color if a colour is provided
+  if (colour) {
+    changeColour(colour);
+  }
 }
 
 function cycleSeason() {
-  let season = document.getElementById("seasonButton").value;
-  if (season == "null"){
-    assignSeason("Summer", "☀️", "gold", "🍂");
-  } else if (season == "Summer"){
+  const currentEmoji = document.getElementById("season-emoji-display").textContent;
+  
+  if (currentEmoji === "☀️") {
     assignSeason("Autumn", "🍂", "orange", "❄️");
-  } else if (season == "Autumn"){
+  } else if (currentEmoji === "🍂") {
     assignSeason("Winter", "❄️", "lightblue", "🌸");
-  } else if (season == "Winter"){
-    assignSeason("Spring", "🌸", "lightpink", "");
-  } else if (season == "Spring"){
-    assignSeason("null", "", "pink", "☀️");
+  } else if (currentEmoji === "❄️") {
+    assignSeason("Spring", "🌸", "lightpink", " "); 
+  } else if (currentEmoji === "🌸" || currentEmoji === " ") {
+    if (currentEmoji === "🌸" && document.getElementById("season-emoji-display").style.visibility === "visible") {
+      // Transition to Clear: Keep the pink background!
+      assignSeason("None", " ", null, "☀️");
+    } else {
+      // Transition from Clear (or initial): Go to Summer Gold
+      assignSeason("Summer", "☀️", "#f5df3d", "🍂");
+    }
   }
 }
 
@@ -404,7 +538,9 @@ document.querySelectorAll('.nav-link').forEach(link => {
     const targetId = e.target.getAttribute('data-target');
     const targetElement = document.getElementById(targetId);
     if (targetElement) {
-      targetElement.scrollIntoView({ behavior: 'smooth' });
+      const offset = 50;
+      const targetY = targetElement.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: targetY, behavior: 'smooth' });
     }
   });
 });

@@ -39,6 +39,7 @@
   box-sizing: border-box;
   max-width: calc(100vw - 20px);
   white-space: nowrap;
+  margin-bottom: 20px;
 }
 
 /* ================ BODY ================ */
@@ -159,6 +160,8 @@ h3 {
 #seasonText {
   margin-top: 0;
   margin-bottom: 0;
+  height: auto;
+  min-height: 1.2em;
   text-align: justify;
   overflow: hidden;
   display: inline-block;
@@ -174,8 +177,8 @@ h3 {
 }
 
 .sidebar {
-  margin-top: 0;
-  top: 15px;
+  margin-top: 25px; 
+  top: 40px;
 }
 
 .content-column {

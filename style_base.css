@@ -38,23 +38,23 @@ body {
 }
 
 .main {
-  /*padding-top: 60px;*/
-  /*background: none;*/
-  display: flex;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 800px) 1fr;
+  gap: 40px;
   align-items: flex-start;
-  justify-content: center;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
 .sidebar {
+  grid-column: 1;
+  justify-self: end;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  flex: 0 0 250px;
+  width: 280px;
   position: sticky;
-  top: 60px; /* Sticky scroll magic */
+  top: 40px;
   z-index: 100;
 }
 
@@ -102,7 +102,8 @@ body {
 }
 
 .content-column {
-  flex: 1 1 auto;
+  grid-column: 2;
+  width: 100%;
   max-width: 800px;
   display: flex;
   flex-direction: column;
@@ -367,7 +368,7 @@ th {
 
 .nav-link {
   font-size: 16px;
-  text-align: center;
+  text-align: left;
   cursor: pointer;
   margin: 0;
   padding: 5px 0;
@@ -387,22 +388,76 @@ th {
   } */
 }
 
-/* Mobile (up to 767px) */
-@media (max-width: 768px) {
+/* --- INTERMEDIATE TABLET VIEW (Stage 2) --- */
+@media (min-width: 801px) and (max-width: 1150px) {
   .main {
+    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+  
+  .sidebar {
+    grid-column: 1;
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start; /* Prevent matching heights */
+    gap: 20px;
+    position: static; /* Stop sticking to top */
+    justify-self: center;
+  }
+  
+  .sidebar .card {
+    flex: 1;
+    margin: 0;
+  }
+
+  .burger-menu {
+    display: block;
+  }
+  
+  .collapsible {
+    display: none;
+  }
+  
+  .collapsible.show {
+    display: block;
+  }
+
+  .nav-links {
+    padding-left: 35px; /* Room for the scrolling arrow in tablet view */
+  }
+}
+
+/* Mobile (up to 800px) Stage 3 */
+@media (max-width: 800px) {
+  .main {
+    display: flex;
     flex-direction: column;
     align-items: stretch;
     padding: 0 10px;
   }
 
-  .sidebar {
-    position: static;
-    flex: none;
-    order: -1; 
+  .sidebar { 
+    width: 100%; 
+    grid-column: span 3; 
+    justify-self: stretch; 
+    position: static; /* Stop sticking to top */
   }
 
-  .scroll-arrow-container {
-    display: none; /* hide on small screens */
+  .burger-menu {
+    display: block;
+  }
+  
+  .collapsible {
+    display: none;
+  }
+  
+  .collapsible.show {
+    display: block;
   }
 
   .waves {
@@ -432,4 +487,259 @@ th {
     display: none !important;
   }
 }
+
+/* ================ NEW STYLE SELECTOR UI ================ */
+.style-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 15px 20px;
+  margin: 0 -30px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  cursor: pointer;
+  transition: background-color 0.2s;
+  user-select: none; /* Prevent blue highlight on rapid clicks */
+}
+
+.style-row:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+
+.style-row:last-child {
+  border-bottom: none;
+}
+
+.style-row-top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.style-label, .emoji-display, .current-value-display {
+  font-size: 14px;
+  color: rgba(0,0,0,0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.preview-container {
+  position: relative;
+}
+
+.mini-dice {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 2;
+  user-select: none;
+}
+
+.mini-dice:hover {
+  transform: scale(1.2);
+}
+
+.emoji-display {
+  font-size: 35px; /* Similar to circle size */
+  line-height: 1;
+}
+
+.current-value-display {
+  font-size: 12px;
+  color: rgba(0,0,0,0.4);
+  font-weight: bold;
+}
+
+.preview-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  background-size: cover;
+  background-position: center;
+}
+
+.preview-circle:hover {
+  transform: scale(1.1);
+}
+
+/* ================ MODALS / POPUPS ================ */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(2px);
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-overlay.show {
+  display: flex;
+}
+
+.modal-container {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+  overflow-y: auto;
+  border: 2px solid #eee;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  color: #888;
+}
+
+.modal-preview-mini {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  background-size: cover;
+}
+
+/* ================ BG POPUP SPECIFICS ================ */
+.bg-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.control-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.angle-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.angle-control input[type="range"] {
+  width: 100px;
+  cursor: pointer;
+}
+
+
+.color-circle {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  cursor: pointer;
+  padding: 0;
+  overflow: hidden;
+}
+
+.color-circle input[type="color"] {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.texture-list {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.texture-option {
+  padding: 8px 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.texture-option.active {
+  background: #eee;
+  border-color: #888;
+}
+
+/* ================ STYLE POPUP SPECIFICS ================ */
+.css-tag {
+  background: #eee;
+  padding: 2px 10px;
+  border: 1px solid #444;
+  font-family: monospace;
+  font-weight: bold;
+  transform: rotate(-5deg);
+  display: inline-block;
+}
+
+.theme-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.theme-item {
+  padding: 12px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s;
+}
+
+.theme-item:not(.locked):hover {
+  background: #f5f5f5;
+}
+
+.theme-item.locked {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.theme-item.active {
+  background: #eef;
+  font-weight: bold;
+}
+
 

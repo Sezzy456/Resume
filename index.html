@@ -48,23 +48,30 @@
       </div>
       
       <div class="collapsible" id="styles-content">
-      <div class="change-buttons-grid">
-        <div class="dropdown">
-          <button title="Change the stylesheet" class="button dropbtn">⚙️</button>
-          <div class="dropdown-content">
-            <p class="dropdown-button active" onclick="changeStyle('Flat-Rounded')">Blob</p>
-            <!--<p class="dropdown-button">Funky</p>-->
-            <p class="dropdown-button" onclick="changeStyle('Newspaper')">Newspaper</p>
-            <p class="dropdown-button" onclick="changeStyle('Notebook')">Notebook</p>
+      <div class="style-rows-container">
+        <div class="style-row" onclick="openPopup('bg-modal')">
+          <div class="style-row-top">
+            <span class="style-label">Background</span>
+            <div class="preview-container">
+              <div id="bg-preview" class="preview-circle"></div>
+              <button class="mini-dice" onclick="quickRandomize(event)" title="Quick Gradient Randomizer">🎲</button>
+            </div>
           </div>
         </div>
         
-        <div class="change-colour-container">
-          <button title="Change background colour" class="button" onclick="changeColour()">🎨</button>
+        <div class="style-row" onclick="cycleSeason()">
+          <div class="style-row-top">
+            <span class="style-label" id="season-label-text">Season</span>
+            <span id="season-emoji-display" class="emoji-display">☀️</span>
+          </div>
+          <input type="hidden" id="seasonButton-hidden" value="Summer">
         </div>
         
-        <div class="change-season-container">
-          <button title="Change the season" class="button" value="null" onclick="cycleSeason()" id="seasonButton">☀️</button>
+        <div class="style-row" onclick="openPopup('style-modal')">
+          <div class="style-row-top">
+            <span class="style-label">Stylesheet</span>
+          </div>
+          <span id="current-style-display" class="current-value-display">Blob</span>
         </div>
       </div>
       </div>
@@ -235,6 +242,86 @@ viewBox="0 0 760 80" shape-rendering="auto">
   
 
   <script src="scripts.js"></script>
+
+  <!-- ================ BACKGROUND MODAL ================ -->
+  <div id="bg-modal" class="modal-overlay" onclick="closePopupIfOutside(event, 'bg-modal')">
+    <div class="modal-container">
+      <div class="modal-header">
+        <div id="bg-modal-preview" class="modal-preview-mini"></div>
+        <button class="close-btn" onclick="closePopup('bg-modal')">×</button>
+      </div>
+      
+      <div class="bg-controls">
+        <div class="control-item">
+          <button class="button randomize-btn" onclick="changeColour(null)" title="Randomize">🎲</button>
+          <span>Random</span>
+        </div>
+
+        <div class="control-item">
+          <div class="color-circle" id="c1-circle">
+            <input type="color" id="bg-color-1" onchange="updateBgFromInputs()">
+          </div>
+          <span>Colour 1</span>
+        </div>
+
+        <div class="control-item">
+          <input type="checkbox" id="enable-color-2" onchange="updateBgFromInputs()">
+          <div class="color-circle" id="c2-circle">
+            <input type="color" id="bg-color-2" onchange="updateBgFromInputs()">
+          </div>
+          <span>Colour 2</span>
+          <div class="angle-control">
+            <input type="range" id="bg-angle" min="0" max="360" value="135" oninput="updateBgFromInputs()" title="Gradient Angle">
+          </div>
+        </div>
+
+        <div class="control-item">
+          <span class="style-label">Textures</span>
+          <div class="texture-list">
+            <div class="texture-option" onclick="selectTexture('none')">None</div>
+            <div class="texture-option" onclick="selectTexture('paper')">Paper</div>
+            <div class="texture-option" onclick="selectTexture('desk')">Desk</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================ STYLE MODAL ================ -->
+  <div id="style-modal" class="modal-overlay" onclick="closePopupIfOutside(event, 'style-modal')">
+    <div class="modal-container">
+      <div class="modal-header">
+        <div class="css-tag">css</div>
+        <button class="close-btn" onclick="closePopup('style-modal')">×</button>
+      </div>
+      
+      <div class="theme-grid">
+        <div class="theme-item" onclick="changeStyle('Flat-Rounded'); closePopup('style-modal')">Blob</div>
+        <div class="theme-item" onclick="changeStyle('Newspaper'); closePopup('style-modal')">Newspaper</div>
+        <div class="theme-item" onclick="changeStyle('Notebook'); closePopup('style-modal')">Notebook</div>
+        
+        <!-- Locked Styles -->
+        <div class="theme-item locked">Comic 🔒</div>
+        <div class="theme-item locked">Wanted 🔒</div>
+        <div class="theme-item locked">Under the Sea 🔒</div>
+        <div class="theme-item locked">Detective 🔒</div>
+        <div class="theme-item locked">Retro 🔒</div>
+        <div class="theme-item locked">XP Vista 🔒</div>
+        <div class="theme-item locked">Derpy 🔒</div>
+        <div class="theme-item locked">Sci-Fi 🔒</div>
+        <div class="theme-item locked">Artsy 🔒</div>
+        <div class="theme-item locked">Hacker 🔒</div>
+        <div class="theme-item locked">Graffiti 🔒</div>
+        <div class="theme-item locked">Pastel 🔒</div>
+        <div class="theme-item locked">Menu 🔒</div>
+        <div class="theme-item locked">Music 🔒</div>
+        <div class="theme-item locked">Zine/Collage 🔒</div>
+        <div class="theme-item locked">Parallax 🔒</div>
+        <div class="theme-item locked">Glass Morphism 🔒</div>
+        <div class="theme-item locked">Illustrative 🔒</div>
+      </div>
+    </div>
+  </div>
   </body>
 </html>
 
