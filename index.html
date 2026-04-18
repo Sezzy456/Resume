@@ -48,11 +48,6 @@
       </div>
       
       <div class="collapsible" id="styles-content">
-        <div class="resume-toggles">
-        <button onclick="showResume('dev', true)">Developer Resume</button>
-        <button onclick="showResume('ux', true)">Designer Resume</button>
-      </div>
-
       <div class="change-buttons-grid">
         <div class="dropdown">
           <button title="Change the stylesheet" class="button dropbtn">⚙️</button>
@@ -89,165 +84,41 @@
 
     <div id="portfolio" class="content-box">
       <h4 class="card-title">PORTFOLIO</h4>
-      <p class="center-aligned">Projects coming soon...</p>
+      <div class="section projects">
+        <p><strong>Plant Finder Web App - UX/UI & Front-End (Team Project)</strong>
+        <br>• Designed user flows, wireframes, and responsive UI layouts in Figma.
+        <br>• Implemented interface components using HTML, CSS, and JavaScript.
+        <br>• Collaborated in Agile sprints using Jira, GitHub, and team standups.
+        <br>• Conducted peer usability testing and improved browsing and filter clarity, reducing navigation friction.
+        </p>
+        <p><strong>Job Exploration App - UX Research & UI Prototype (Team Project)</strong>
+        <br>• Created user flows and information architecture for the application.
+        <br>• Designed high-fidelity interactive prototypes in Figma.
+        <br>• Designed for intuitive navigation and decision-support interactions.
+        <br>• Participated in research, ideation, and iteration cycles to refine designs.
+        </p>
+        <p><strong>Woolworths Website UX Testing - UX Research (Team Project)</strong>
+        <br>• Conducted first-click tests, card sorting, and tree testing in Optimal Workshop.
+        <br>• Analysed results to identify navigation issues and produce actionable recommendations.
+        <br>• Improved task clarity and reduced path confusion through revised flows.
+        </p>
+        <p><strong>Personal Portfolio Website - UI & Front-End (Solo Project)</strong>
+        <br>• Designed and developed a full personal website using custom HTML, CSS and JavaScript.
+        <br>• Built a clean, responsive interface with structured CSS for maintainability.
+        <br>• Delivered end-to-end design and implementation, hosted at <a href="http://www.sarahevans.au">www.sarahevans.au</a>
+        </p>
+      </div>
     </div>
 
     <div id="resume" class="content-box">
       <h4 class="card-title">RESUME</h4>
-      <!-- ====================================================================== RESUME DEVELOPER (DEFAULT) ===================================================================== -->
-      <div id="resume-dev">
-        <div class="section center-aligned information">
-                <p><i>Phone:</i> 0000 000 000 • <i>Email:</i> example@email.com • <i>Location:</i> Melbourne, Victoria 
-          <br ><i>LinkedIn:</i> <a href="linkedin.com/in/sarahevans456">linkedin.com/in/sarahevans456</a> • <i>GitHub:</i> <a href="github.com/Sezzy456">github.com/Sezzy456</a> 
-          <br >Full Australian Driver’s Licence • RSA Certified</p>
-        </div>
-
-      <div class="section education">
-                <h3>Education</h3>
-          <p><b>Bachelor of Design (User Experience Design)</b> 
-        <br ><e>University of Melbourne</e> - 2024
-                </p>
-          <ul>
-        <li>Focused on user research, UI/UX methodologies, journey mapping, ideation, prototyping, web accessibility, and front-end tools</li>
-          </ul>
+      <div class="resume-toggles">
+        <button onclick="showResume('researcher', true)">User Experience Resume</button>
+        <button onclick="showResume('designer', true)">Designer Resume</button>
+        <button onclick="showResume('developer', true)">Developer Resume</button>
       </div>
-
-      <div class="section technical-skills">
-
-      </div>
-      <div class="section work-experience">
-                <h3>Work Experience</h3>
-        <p><b>VEMI</b> - Hospitality Staff
-        <br >2021 - 2025</p>
-                <ul>
-                    <li>Worked in a variety of roles: Front of House, Kitchenhand, Housekeeping, and Bartender</li>
-                    <li>Developed strong time management and adaptability across tasks and environments</li>
-        <li>Delivered friendly and efficient customer service under pressure</li>
-        <li>Practised clear team communication and multitasking on the job</li>
-                </ul>
-      </div>
-      <div class="section skills">
-                <h3>Skills</h3>
-                <ul>
-                    <li>Current Driver's License</li>
-                    <li>Proficient in the Microsoft Suite - Word, Excel, PowerPoint, 
-                        Pulisher, and OneNote</li>
-                    <li>Able to work with coding languages such as Python, HTML, CSS, 
-                        JavaScript, SQL, C, Java</li>
-                    <li>Current RSA - Responsible Serving of Alcohol</li>
-                </ul>
-      </div>
-      <div class="section certifications">
-                <h3>Certifications</h3>
-        <ul>
-          <li>Certificate III in Screen and Media</li>
-          <li>RSA (Responsible Service of Alcohol)</li>
-          <li>Full Australian Driver's License</li>
-        </ul>
-      </div>
-      <p class="center-aligned">References available upon request</p>
-
+      <div id="resume-target"></div>
     </div>
-
-    <!-- ====================================================================== RESUME UI/UX ===================================================================== -->
-    <div id="resume-ux" hidden>
-      <div class="row">
-        <div class="column">
-          <div class="section information">
-            <h3>Contact</h3>
-              <p>📞<i>Phone:</i> 0000 000 000 
-            <br >📧<i>Email:</i> example@email.com 
-            <br >📍<i>Location:</i> Melbourne, Victoria 
-            <br >🌐<i>LinkedIn:</i> <a href="linkedin.com/in/sarahevans456">linkedin.com/in/sarahevans456</a> 
-            <br >🌐<i>GitHub:</i> <a href="github.com/Sezzy456">github.com/Sezzy456</a> 
-            <br >Full Australian Driver’s Licence • RSA Certified</p>
-          </div>
-
-          <div class="section technical-skills skills">
-                    <h3>Technical Skills</h3>
-          <table>
-            <tr>
-              <th>Skill</th>
-              <th>Proficiency</th>
-            </tr>
-            <tr>
-              <td>HTML/CSS</td>
-              <td>██████████</td>
-            </tr>
-            <tr>
-              <td>JavaScript</td>
-              <td>█████████░</td>
-            </tr>
-            <tr>
-              <td>Python</td>
-              <td>█████████░</td>
-            </tr>
-            <tr>
-              <td>SQL</td>
-              <td>██████░░░░</td>
-            </tr>
-            <tr>
-              <td>C/C++/C#</td>
-              <td>██████░░░░</td>
-            </tr>
-            <tr>
-              <td>Java</td>
-              <td>██████░░░░</td>
-            </tr>
-            <tr>
-              <td>Figma</td>
-              <td>██████████</td>
-            </tr>
-            <tr>
-              <td>Adobe Suite</td>
-              <td>██████░░░░</td>
-            </tr>
-            <tr>
-              <td>Office / Google Suite</td>
-              <td>██████████</td>
-            </tr>
-          </table>
-          </div>
-
-          <div class="section certifications">
-            <h3>Certifications</h3>
-            <ul>
-              <li>Certificate III in Screen and Media</li>
-              <li>RSA (Responsible Service of Alcohol)</li>
-              <li>Full Australian Driver's License</li>
-            </ul>
-          </div>
-
-        </div>
-
-        <div class="column">
-          <div class="section education">
-            <h3>Education</h3>
-            <p><b>Bachelor of Design (User Experience Design)</b> 
-              <br ><e>University of Melbourne</e> - 2024
-              </p>
-            <ul>
-              <li>Focused on user research, UI/UX methodologies, journey mapping, ideation, prototyping, web accessibility, and front-end tools</li>
-            </ul>
-          </div>
-
-          <div class="section work-experience">
-            <h3>Work Experience</h3>
-            <p><b>VEMI</b> - Hospitality Staff
-              <br >2021 - 2025</p>
-            <ul>
-              <li>Worked in a variety of roles: Front of House, Kitchenhand, Housekeeping, and Bartender</li>
-              <li>Developed strong time management and adaptability across tasks and environments</li>
-              <li>Delivered friendly and efficient customer service under pressure</li>
-              <li>Practised clear team communication and multitasking on the job</li>
-            </ul>
-          </div>
-
-        </div>
-      </div>	
-      <p class="center-aligned">References available upon request</p>
-    </div>
-  </div>
   <p class="sign">Made by Sarah Evans</p>
 </div>
 </main>

@@ -23,10 +23,11 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: textclip 5s linear infinite;
-  font-size: clamp(20px, 9vw, 80px);
+  font-size: clamp(20px, 9.1vw, 150px);
   z-index: 1;
   padding: 0 10px;
   box-sizing: border-box;
+  max-width: calc(100vw - 20px);
   white-space: nowrap;
 }
 
@@ -50,7 +51,7 @@ body {
   position: relative;
   margin-bottom: -15px;
   padding-top: 2vw;
-  padding-bottom: 20px;
+  padding-bottom: 5px;
   display: flex;
   align-items: flex-end;
   justify-content: center;

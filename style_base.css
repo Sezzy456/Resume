@@ -11,9 +11,11 @@
   text-align: center;
   color: black;
   text-shadow: none;
-  font-size: clamp(20px, 9vw, 80px);
+  font-size: clamp(20px, 9.1vw, 150px);
+  z-index: 1;
   padding: 0 10px;
   box-sizing: border-box;
+  max-width: calc(100vw - 20px);
   white-space: nowrap;
 }
 
@@ -166,6 +168,17 @@ th {
   text-align: left;
 }
 
+.skills-columns {
+  column-count: 2;
+  column-gap: 30px;
+}
+
+@media (max-width: 1000px) {
+  .skills-columns {
+    column-count: 1;
+  }
+}
+
 
 /* ================ BUTTONS ================ */
 .button {
@@ -261,9 +274,13 @@ th {
 
 .resume-toggles {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 20px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
 .resume-toggles button {
@@ -303,6 +320,11 @@ th {
   font-size: small;
   color: white;
   margin-top: -15px;
+}
+
+.sidebar {
+  margin-top: 0;
+  top: 40px;
 }
 
 .waves-container {

@@ -38,10 +38,10 @@
   font-family: "Indie Flower", cursive;
   font-weight: 900;
   font-style: normal;
-  font-size: clamp(30px, 15vw, 80px);
+  font-size: clamp(30px, 15vw, 120px);
   margin: 0;
   margin-top: 50px;
-  -webkit-text-stroke: 25px white;
+  -webkit-text-stroke: 30px white;
   paint-order: stroke fill;
   padding: 0 20px;
   box-sizing: border-box;
@@ -121,7 +121,7 @@ body {
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
   left: -5px;
   top: 4px;
-  transform: rotate(-2.5deg);
+  transform: rotate(-0.5deg);
 }
 
 .content-box:after {
@@ -129,7 +129,7 @@ body {
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
   right: -3px;
   top: 1px;
-  transform: rotate(1.4deg);
+  transform: rotate(0.3deg);
 }
 
 .main {

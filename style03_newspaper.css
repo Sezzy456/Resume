@@ -33,11 +33,11 @@
   /* FONT */
   font-family: "UnifrakturMaguntia", cursive;
   font-weight: 400;
-  font-size: clamp(30px, 15vw, 80px);
-  margin: 0;
-  margin-top: 50px;
+  font-size: clamp(20px, 9.1vw, 150px);
+  z-index: 1;
   padding: 0 10px;
   box-sizing: border-box;
+  max-width: calc(100vw - 20px);
   white-space: nowrap;
 }
 
@@ -60,7 +60,7 @@ h3 {
 
 .content-box {
   padding: 30px;
-  background-color: #fff;
+  background-color: transparent;
   position: relative;
 }
 
@@ -171,6 +171,23 @@ h3 {
 
 #about-me .card-title {
   margin-bottom: 5px;
+}
+
+.sidebar {
+  margin-top: 0;
+  top: 15px;
+}
+
+.content-column {
+  margin-top: 0;
+}
+
+.sidebar .card-title {
+  text-align: center;
+}
+
+.sidebar .card {
+  background-color: transparent;
 }
 
 /* ================ SIGNATURE THANG ================ */
