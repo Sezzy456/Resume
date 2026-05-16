@@ -49,12 +49,12 @@
       
       <div class="collapsible" id="styles-content">
       <div class="style-rows-container">
-        <div class="style-row" onclick="openPopup('bg-modal')">
+        <div class="style-row" onclick="openPopup('background-modal')">
           <div class="style-row-top">
             <span class="style-label">Background</span>
             <div class="preview-container">
               <div id="bg-preview" class="preview-circle"></div>
-              <button class="mini-dice" onclick="quickRandomize(event)" title="Quick Gradient Randomizer">🎲</button>
+              <button class="mini-dice" onclick="quickRandomiseBackground(event)" title="Quick Gradient Randomizer">🎲</button>
             </div>
           </div>
         </div>
@@ -172,67 +172,7 @@ viewBox="0 0 760 80" shape-rendering="auto">
         <use xlink:href="#gentle-wave" x="2280" y="7" fill="#fff" />
       </g>
     </g>
-    <!-- <defs>
-
-      <g class="layer layer1">
-  <use href="#gentle-wave" x="0" />
-  <use href="#gentle-wave" x="760" />
-</g>
-
-
-
-      ===================== PROBABLY THIS =======================
-  <svg viewBox="0 0 760 80" width="100%" height="100%">
-
-    <defs>
-      //<pattern id="wavePattern" width="760" height="80" patternUnits="userSpaceOnUse">
-        <path d="M 760 10 C 612 10 624 40 545 40 C 453 39 438 17 388 10 C 329 2 286 14 261 26 C 266 18 266 16 267 12 C 269 4 253 -2 256 11 C 241 3 241 19 250 20 C 258 21 264 21 261 26 C 252 31 229 41 211 41 C 125 41 114 10 0 10 Z" fill="white"/>
-      //</pattern>
-    </defs>
-
-    //<rect width="100%" height="100%" fill="url(#wavePattern)" />
-
-  </svg>
-
-
-
-  ========================== CODE OUTLINE i guess ================================
-  <pattern id="wave" width="760" height="80" patternUnits="userSpaceOnUse">
-    <path d="YOUR PATH HERE" fill="white"/>
-  </pattern>
-</defs>
-
-<rect width="100%" height="100%" fill="url(#wave)" />
-
-<g class="parallax">
-  <g class="layer layer1">
-    <use .../>
-    <use .../>
-    <use .../>
-  </g>
-
-  <g class="layer layer2">
-    <use .../>
-    <use .../>
-    <use .../>
-  </g>
-</g>
-
-
-.parallax use {
-  animation: move-forever 20s linear infinite;
-}
-
-.layer1 use { animation-duration: 7s; }
-.layer2 use { animation-duration: 14s; }
-
-@keyframes move-forever {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-760px); }
-}
-
--->
-
+    
   </svg>
 </div>
 <!-- The end -->
@@ -243,12 +183,13 @@ viewBox="0 0 760 80" shape-rendering="auto">
 
   <script src="scripts.js"></script>
 
-  <!-- ================ BACKGROUND MODAL ================ -->
-  <div id="bg-modal" class="modal-overlay" onclick="closePopupIfOutside(event, 'bg-modal')">
+  <!-- ================ BACKGROUND MODAL - is the modal the 'pop up' ? ================ -->
+   <!-- background_style_selector background_modal -->
+  <div id="background-modal" class="modal-overlay" onclick="closePopupIfOutside(event, 'background-modal')">
     <div class="modal-container">
       <div class="modal-header">
-        <div id="bg-modal-preview" class="modal-preview-mini"></div>
-        <button class="close-btn" onclick="closePopup('bg-modal')">×</button>
+        <div id="background-modal-preview" class="modal-preview-mini"></div>
+        <button class="close-btn" onclick="closePopup('background-modal')">×</button>
       </div>
       
       <div class="bg-controls">
@@ -259,19 +200,19 @@ viewBox="0 0 760 80" shape-rendering="auto">
 
         <div class="control-item">
           <div class="color-circle" id="c1-circle">
-            <input type="color" id="bg-color-1" onchange="updateBgFromInputs()">
+            <input type="color" id="background-colour-1" onchange="updateBackground()">
           </div>
           <span>Colour 1</span>
         </div>
 
         <div class="control-item">
-          <input type="checkbox" id="enable-color-2" onchange="updateBgFromInputs()">
+          <input type="checkbox" id="enable-colour-2" onchange="updateBackground()">
           <div class="color-circle" id="c2-circle">
-            <input type="color" id="bg-color-2" onchange="updateBgFromInputs()">
+            <input type="color" id="background-colour-2" onchange="updateBackground()">
           </div>
           <span>Colour 2</span>
           <div class="angle-control">
-            <input type="range" id="bg-angle" min="0" max="360" value="135" oninput="updateBgFromInputs()" title="Gradient Angle">
+            <input type="range" id="background-angle" min="0" max="360" value="135" oninput="updateBackground()" title="Gradient Angle">
           </div>
         </div>
 

@@ -1,7 +1,40 @@
-function changeContents {
-    // when button clicked (in button)
-    // change contents of 'main' to
-    /*'  <div id="content-box" class="content-box">
+<!DOCTYPE html>
+<html>
+    <head>
+	<title>Sarah Evans</title>
+	<link rel="stylesheet" href="style_base.css">
+	<link id="theme" rel="stylesheet" href="style01.css">
+	
+	<!-- =============== GOOGlE APIS ================ -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Homemade+Apple&family=Indie+Flower&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+
+
+
+    </head>
+    <body>
+<header class="header">
+        <h1 class="title">Sarah Evans</h1>
+	<div class="dropdown">
+	  <button title="Change the stylesheet" class="button dropbtn">⚙️</button>
+	  <div class="dropdown-content">
+	    <p class="dropdown-button active" onclick="changeStyle('Flat-Rounded')">Blob</p>
+	    <p class="dropdown-button" onclick="changeStyle('Shadow')">Shadow</p>
+	    <!--<p class="dropdown-button">Funky</p>-->
+	    <p class="dropdown-button" onclick="changeStyle('Newspaper')">Newspaper</p>
+	    <p class="dropdown-button" onclick="changeStyle('Notebook')">Notebook</p>
+	  </div>
+	</div>
+
+	<div class="change-layout-container">
+      	  <a href="index.html"><button title="Change resume layout" class="button resume-button" onclick="changeLayout()">📄</button></a>
+        </div>
+
+</header>
+
+<main id='main' class='main'>
+  <div id="content-box" class="content-box">
 
   <div class="change-buttons-container">
     <div class="change-colour-container">
@@ -120,5 +153,50 @@ function changeContents {
 	
     <p class="center-aligned">References available upon request</p>
   
-  </div>'*/
-}
+  </div>
+
+
+</main>
+
+<footer class="footer">
+
+<p class="sign">Made by Sarah Evans</p>
+
+<!-- My Waves -->
+<div class="waves-container">
+  <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+viewBox="0 0 760 80"  shape-rendering="auto">
+    <defs>
+      <path id="gentle-wave" d="M 760 10 C 612 10 624 40 545 40 C 453 39 438 17 388 10 C 329 2 286 14 261 26 C 266 18 266 16 267 12 C 269 4 253 -2 256 11 C 241 3 241 19 250 20 C 258 21 264 21 261 26 C 252 31 229 41 211 41 C 125 41 114 10 0 10 L 0 80 S 3 80 40 80 C 100 80 160 80 220 80 S 340 80 400 80 S 520 80 580 80 S 700 80 730 80 L 760 80 Z" />
+    </defs>
+    <g class="parallax">
+      <use xlink:href="#gentle-wave" x="0" y="0" fill="rgba(255,255,255,0.7" />
+	<use xlink:href="#gentle-wave" x="760" y="0" fill="rgba(255,255,255,0.7" />
+	<use xlink:href="#gentle-wave" x="1520" y="0" fill="rgba(255,255,255,0.7" />
+
+      <use xlink:href="#gentle-wave" x="0" y="3" fill="rgba(255,255,255,0.5)" />
+	<use xlink:href="#gentle-wave" x="760" y="3" fill="rgba(255,255,255,0.5)" />
+	<use xlink:href="#gentle-wave" x="1520" y="3" fill="rgba(255,255,255,0.5)" />
+
+      <use xlink:href="#gentle-wave" x="0" y="5" fill="rgba(255,255,255,0.3)" />
+	<use xlink:href="#gentle-wave" x="760" y="5" fill="rgba(255,255,255,0.3)" />
+	<use xlink:href="#gentle-wave" x="1520" y="5" fill="rgba(255,255,255,0.3)" />
+
+      <use xlink:href="#gentle-wave" x="0" y="7" fill="#fff" /> 
+	<use xlink:href="#gentle-wave" x="760" y="7" fill="#fff" />  
+	<use xlink:href="#gentle-wave" x="1520" y="7" fill="#fff" />     
+
+    </g>
+  </svg>
+</div>
+<!-- The end -->
+
+</footer>
+
+  
+
+  <script src="scripts.js"></script>
+  </body>
+
+</html>
+

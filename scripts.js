@@ -1,58 +1,58 @@
-// alert('changeSeasonText activated');
+// ============================================================================
+// 
+//                    Sarah's Script for SarahEvans.au
+//
+// ============================================================================
 
-/* ============ An attempt that didn't work ==============   
-function changeLayout() {
-  currentWindow = console.log(window.location.pathname); // Just the file path (/index.html)
-
-  if (currentWindow == 'SarahEvans.html'){
-    window.location.href='SarahEvansGraphic.html';
-  } else if (currentWindow == 'SarahEvansGraphic.html'){
-    window.location.href='SarahEvans.html';
-  }
-}
-*/
-        
-let bgState = {
-  c1: '#f5df3d',
-  c2: '#eb2dbb',
-  c2Enabled: true,
+// Background colours or textures settings
+let backgroundStyle = {
+  colour_1: '#f5df3d',
+  colour_2: '#eb2dbb',
+  colour_2_enabled: true,
   angle: 135,
   texture: 'none'
 };
 
-function quickRandomize(e) {
-  if (e) e.stopPropagation();
-  bgState.c1 = get_rand_colour();
-  bgState.c2 = get_rand_colour();
-  bgState.c2Enabled = true;
-  bgState.angle = get_rand_degree();
-  bgState.texture = 'none'; // Clear textures on quick dice
+// For the Quick Randomise Dice
+function quickRandomiseBackground(e) { // what's e for ?
+  if (e) e.stopPropagation(); // what's stopPropagation ?
+  backgroundStyle.colour_1 = getRandomColour();
+  backgroundStyle.colour_2 = getRandomColour();
+  backgroundStyle.colour_2_enabled = true;
+  backgroundStyle.angle = getRandomDegree();
+  backgroundStyle.texture = 'none'; // Clear textures on quick dice
   updatePortfolioBackground();
-  updateTextureButtons(); // Sync modal UI
-  if (document.getElementById('bg-modal').classList.contains('show')) syncBgInputs();
+  updateTextureButtons(); // Sync modal UI // what's this?
+  if (document.getElementById('background-modal').classList.contains('show')) syncBgInputs();
 }
+
 
 function openPopup(id) {
   document.getElementById(id).classList.add('show');
-  if (id === 'bg-modal') syncBgInputs();
+  if (id === 'background-modal') syncBgInputs(); // again what's syncBgInputs
 }
 
+// is remove('show') in classList the best way?
 function closePopup(id) {
   document.getElementById(id).classList.remove('show');
 }
 
+// what's 'e' ?
 function closePopupIfOutside(e, id) {
   if (e.target.id === id) closePopup(id);
 }
 
+// sync Bg Inputs and updateTextureButtons I need to understand
 function syncBgInputs() {
-  document.getElementById('bg-color-1').value = rgbToHex(bgState.c1) || bgState.c1;
-  document.getElementById('bg-color-2').value = rgbToHex(bgState.c2) || bgState.c2;
-  document.getElementById('enable-color-2').checked = bgState.c2Enabled;
-  document.getElementById('bg-angle').value = bgState.angle;
+  document.getElementById('background-colour-1').value = rgbToHex(backgroundStyle.colour_1) || backgroundStyle.colour_1;
+  document.getElementById('background-colour-2').value = rgbToHex(backgroundStyle.colour_2) || backgroundStyle.colour_2;
+  document.getElementById('enable-colour-2').checked = backgroundStyle.colour_2_enabled;
+  document.getElementById('background-angle').value = backgroundStyle.angle;
   updateTextureButtons();
 }
 
+// woah what is this mess? 
+// what's 'match' and then what's /\d+/g ?
 function rgbToHex(rgb) {
   if (!rgb.startsWith('rgb')) return rgb;
   const match = rgb.match(/\d+/g);
@@ -60,23 +60,27 @@ function rgbToHex(rgb) {
   return "#" + match.slice(0, 3).map(x => parseInt(x).toString(16).padStart(2, '0')).join('');
 }
 
-function updateBgFromInputs() {
-  bgState.c1 = document.getElementById('bg-color-1').value;
-  bgState.c2 = document.getElementById('bg-color-2').value;
-  bgState.c2Enabled = document.getElementById('enable-color-2').checked;
-  bgState.angle = document.getElementById('bg-angle').value;
+// updateBackground (why from inputs?) (used to be updateBgFromInputs) update Background... from user Input
+// updateBackgroundFromHTML 
+function updateBackground() {
+  backgroundStyle.colour_1 = document.getElementById('background-colour-1').value;
+  backgroundStyle.colour_2 = document.getElementById('background-colour-2').value;
+  backgroundStyle.colour_2_enabled = document.getElementById('enable-color-2').checked;
+  backgroundStyle.angle = document.getElementById('background-angle').value;
   updatePortfolioBackground();
 }
 
-function selectTexture(tex) {
-  bgState.texture = tex;
-  updateTextureButtons();
+function selectTexture(textureName) {
+  backgroundStyle.texture = textureName;
+  updateTextureButtons(); // this shouldn't be in js. Easy css no? 
   updatePortfolioBackground();
 }
 
+
+// This function doesn't make sense to me just yet. Might go away. 
 function updateTextureButtons() {
   document.querySelectorAll('.texture-option').forEach(opt => {
-    opt.classList.toggle('active', opt.textContent.toLowerCase() === bgState.texture);
+    opt.classList.toggle('active', opt.textContent.toLowerCase() === backgroundStyle.texture);
   });
 }
 
@@ -85,26 +89,26 @@ function updatePortfolioBackground() {
   let bgString = "";
 
   // Base Colors
-  if (bgState.c2Enabled) {
-    bgString = `linear-gradient(${bgState.angle}deg, ${bgState.c1} 0%, ${bgState.c2} 100%)`;
+  if (backgroundStyle.colour_2_enabled) {
+    bgString = `linear-gradient(${backgroundStyle.angle}deg, ${backgroundStyle.colour_1} 0%, ${backgroundStyle.colour_2} 100%)`;
   } else {
-    bgString = bgState.c1;
+    bgString = backgroundStyle.colour_1;
   }
 
   body.style.background = bgString;
-  body.style.backgroundColor = bgState.c1; // Fallback
+  body.style.backgroundColor = backgroundStyle.colour_1; // Fallback
 
   // Textures
-  if (bgState.texture === 'paper') {
-    body.style.backgroundImage = `url('Images/textured_paper2.png'), ${bgState.c2Enabled ? bgString : 'none'}`;
-  } else if (bgState.texture === 'desk') {
-    body.style.backgroundImage = `url('Images/desk.jpg'), ${bgState.c2Enabled ? bgString : 'none'}`;
+  if (backgroundStyle.texture === 'paper') {
+    body.style.backgroundImage = `url('Images/textured_paper2.png'), ${backgroundStyle.colour_2_enabled ? bgString : 'none'}`;
+  } else if (backgroundStyle.texture === 'desk') {
+    body.style.backgroundImage = `url('Images/desk.jpg'), ${backgroundStyle.colour_2_enabled ? bgString : 'none'}`;
   } else {
-    body.style.backgroundImage = bgState.c2Enabled ? bgString : 'none';
+    body.style.backgroundImage = backgroundStyle.colour_2_enabled ? bgString : 'none';
   }
 
   const preview = document.getElementById('bg-preview');
-  const miniPreview = document.getElementById('bg-modal-preview');
+  const miniPreview = document.getElementById('background-modal-preview');
   const c1Circle = document.getElementById('c1-circle');
   const c2Circle = document.getElementById('c2-circle');
 
@@ -112,23 +116,25 @@ function updatePortfolioBackground() {
 
   if (preview) preview.style.background = finalStyle;
   if (miniPreview) miniPreview.style.background = finalStyle;
-  if (c1Circle) c1Circle.style.backgroundColor = bgState.c1;
-  if (c2Circle) c2Circle.style.backgroundColor = bgState.c2;
+  if (c1Circle) c1Circle.style.backgroundColor = backgroundStyle.colour_1;
+  if (c2Circle) c2Circle.style.backgroundColor = backgroundStyle.colour_2;
 }
 
+// this function doesn't allow two colours... 
 function changeColour(colour) {
   if (colour === null) {
-    bgState.c1 = get_rand_colour();
-    bgState.c2 = get_rand_colour();
-    bgState.c2Enabled = Math.random() > 0.5;
+    backgroundStyle.colour_1 = getRandomColour();
+    backgroundStyle.colour_2 = getRandomColour();
+    backgroundStyle.colour_2_enabled = Math.random() > 0.5;
   } else {
-    bgState.c1 = colour;
-    bgState.c2Enabled = false;
+    backgroundStyle.colour_1 = colour;
+    backgroundStyle.colour_2_enabled = false;
   }
   updatePortfolioBackground();
-  if (document.getElementById('bg-modal').classList.contains('show')) syncBgInputs();
+  if (document.getElementById('background-modal').classList.contains('show')) syncBgInputs();
 }
 
+// Have all of this HTML replacement in a different JS file. 
 const RESUME_DATA = {
   researcher: `
     <div class="section center-aligned information">
@@ -380,10 +386,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // Initialize background and UI
   // Start with signature Pink-Gold gradient
-  bgState.c1 = '#f5df3d'; // Gold
-  bgState.c2 = '#eb2dbb'; // Pink
-  bgState.c2Enabled = true;
-  bgState.angle = 30;
+  backgroundStyle.colour_1 = '#f5df3d'; // Gold
+  backgroundStyle.colour_2 = '#eb2dbb'; // Pink
+  backgroundStyle.colour_2_enabled = true;
+  backgroundStyle.angle = 30;
   updatePortfolioBackground();
   
   // Set initial Season state
@@ -476,12 +482,12 @@ function newSeasonText(emoji){
   return seasonTxt;
 }
 
-function get_rand_colour() {
+function getRandomColour() {
   var r = function() {return Math.floor(Math.random()*256)};
   return "rgb(" + r() + "," + r() + "," + r() + ")";
 }
 
-function get_rand_degree() {
+function getRandomDegree() {
   return Math.floor(Math.random()*360);
 }
 
